@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { 
             key: "Access-Control-Allow-Origin", 
-            value: "http://localhost:8100" // En producción, cámbialo por tu dominio real
+            value: "https://electoral-zeta.vercel.app/" // En producción, cámbialo por tu dominio real
           },
           { 
             key: "Access-Control-Allow-Methods", 
