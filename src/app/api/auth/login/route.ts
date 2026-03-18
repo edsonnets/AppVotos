@@ -61,15 +61,15 @@ export async function POST(req: Request) {
             user: { userId: user.id, name: user.name, email: user.email, idTable: userTable.table_id, numTable: userTable.internal_code, cod_institution: userTable.institution_id, institution: userTable.name }
         });
 
-        const isProduction = process.env.NODE_ENV === 'production';
+        //const isProduction = process.env.NODE_ENV === 'production';
 
 
         response.cookies.set({
             name: 'auth_token',
             value: token,
             httpOnly: true, // No accesible por JS
-            secure: isProduction, // Solo en HTTPS en producción
-            sameSite: isProduction ? 'none' : 'lax',
+            secure: process.env.NODE_ENV === 'production',  // Solo en HTTPS en producción
+            sameSite: 'lax',
             maxAge: 3600, // 1 hora en segundos
             path: '/',
         });

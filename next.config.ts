@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   output: 'standalone',
 // Configuración de CORS
-  async headers() {
+  /*async headers() {
     return [
       {
         // Aplica estos encabezados a todas las rutas de tu API
@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { 
             key: "Access-Control-Allow-Origin", 
-            value: "https://c-electoral.vercel.app/" // En producción, cámbialo por tu dominio real
+            value: ""//"https://c-electoral.vercel.app/" // En producción, cámbialo por tu dominio real
           },
           { 
             key: "Access-Control-Allow-Methods", 
@@ -25,9 +25,27 @@ const nextConfig: NextConfig = {
             value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" 
           },
         ]
-      }
+      } 
+         
+
     ];
+  }*/
+
+  async headers() {
+    return [
+      {
+        source: "/api/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          { key: "Access-Control-Allow-Origin", value: "http://localhost:8100" }, // El origen de tu App Ionic
+          { key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT" },
+          { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
+        ]
+      }
+    ]
   }
+
+
 };
 
 export default nextConfig;
